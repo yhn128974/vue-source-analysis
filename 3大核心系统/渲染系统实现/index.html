@@ -12,13 +12,21 @@
   <script src="./renderer.js"></script>
   <script>
     // 通过h函数来创建一个v-node
-    const vnode = h("div", { class: "box" }, [
+    const vnode = h("div", { class: "box", id: "aaa" }, [
       h("h2", null, "longyou"),
       h("button", null, "checkhere"),
     ]);
-
     // console.log(vnode);
     // 通过mount函数将vnode挂载到div#app上面
     mount(vnode, document.getElementById("app"));
+
+    //创建新的vnode
+    setTimeout(() => {
+      const vnode1 = h("h2", { class: "longyou", id: "aaa" }, [
+        h("h2", null, "ethanyu"),
+        h("button", null, "wo~"),
+      ]);
+      patch(vnode, vnode1);
+    }, 2000);
   </script>
 </html>
